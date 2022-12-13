@@ -99,7 +99,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #47b2e4;
+  background: #523C1E;
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -149,10 +149,18 @@ h6 {
 #header .logo a {
   color: #2B2024;
   font-size: 24px;
+  text-align: center;
 }
 
 #header .logo img {
   max-height: 64px;
+}
+
+#header .logo-title {
+  margin-top: 50px;
+  font-size: 24px;
+  font-family: "Old Standard TT", sans-serif;
+  font-weight: 600;
 }
 
 /*--------------------------------------------------------------
@@ -213,10 +221,9 @@ h6 {
   margin-left: 30px;
   color: #FFF;
   background: #2B2024;
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 1px;
-  border: 2px solid #47b2e4;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .navbar .getstarted:hover,
@@ -296,7 +303,7 @@ h6 {
 * Mobile Navigation 
 */
 .mobile-nav-toggle {
-  color: #fff;
+  color: #2B2024;
   font-size: 28px;
   cursor: pointer;
   display: none;
@@ -354,19 +361,19 @@ h6 {
 .navbar-mobile a:focus {
   padding: 10px 20px;
   font-size: 15px;
-  color: #37517e;
+  color: #523C1E;
 }
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover>a {
-  color: #47b2e4;
+  color: #523C1E;
 }
 
 .navbar-mobile .getstarted,
 .navbar-mobile .getstarted:focus {
   margin: 15px;
-  color: #37517e;
+  color: #FFF;
 }
 
 .navbar-mobile .dropdown ul {
@@ -408,7 +415,7 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   background: #FAF7F0;
 }
 
@@ -547,12 +554,12 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  padding: 30px 0;
   overflow: hidden;
 }
 
 .section-bg {
-  background-color: #f3f5fa;
+  background-color: #F5F5F5;
 }
 
 .section-title {
@@ -563,11 +570,11 @@ section {
 .section-title h2 {
   font-size: 32px;
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   margin-bottom: 20px;
   padding-bottom: 20px;
   position: relative;
-  color: #37517e;
+  color: #2B2024;
 }
 
 .section-title h2::before {
@@ -587,7 +594,7 @@ section {
   display: block;
   width: 40px;
   height: 3px;
-  background: #47b2e4;
+  background: #523C1E;
   bottom: 0;
   left: calc(50% - 20px);
 }
@@ -627,7 +634,12 @@ section {
 --------------------------------------------------------------*/
 .about {
   background-color: #FAF7F0;
-  font-family: "Old Standard TT",  "Open Sans", sans-serif;
+  /* background-image: url('../img/aboutbg.png');
+  background-size: 10em;
+  background-position: top right;
+  background-repeat: no-repeat; */
+  
+  font-family: "Open Sans", sans-serif;
 }
 
 .about .content h3 {
@@ -690,6 +702,7 @@ section {
 --------------------------------------------------------------*/
 .why-us {
   background-color: #523C1E;
+
   font-family: "Old Standard TT",  "Open Sans", sans-serif;
 }
 
@@ -1152,7 +1165,7 @@ section {
 .team .member .pic {
   overflow: hidden;
   width: 180px;
-  border-radius: 50%;
+  border-radius: 10%;
 }
 
 .team .member .pic img {
@@ -1171,7 +1184,7 @@ section {
   font-weight: 700;
   margin-bottom: 5px;
   font-size: 20px;
-  color: #37517e;
+  color: #2B2024;
 }
 
 .team .member span {
@@ -1481,7 +1494,7 @@ section {
   padding: 0 0 10px 60px;
   margin-bottom: 20px;
   font-size: 14px;
-  color: #6182ba;
+  color: #2B2024;
 }
 
 .contact .info .email p {
@@ -1824,7 +1837,7 @@ section {
 #footer .footer-top .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #47b2e4;
+  background: #523C1E;
   color: #fff;
   line-height: 1;
   padding: 8px 0;
