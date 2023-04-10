@@ -966,8 +966,8 @@ button.btn--primary,
 input[type="submit"].btn--primary,
 input[type="reset"].btn--primary,
 input[type="button"].btn--primary {
-  background: #793ea5;
-  border-color: #793ea5;
+  background: #8E3131;
+  border-color: #8E3131;
   color: #FFFFFF;
 }
 
@@ -981,8 +981,8 @@ button.btn--primary:focus,
 input[type="submit"].btn--primary:focus,
 input[type="reset"].btn--primary:focus,
 input[type="button"].btn--primary:focus {
-  background: #6b3792;
-  border-color: #6b3792;
+  background: #AB0000;
+  border-color: #AB0000;
 }
 
 /* button modifiers
@@ -1434,7 +1434,7 @@ body.menu-is-open {
   line-height: 1.333;
   text-transform: uppercase;
   letter-spacing: .25rem;
-  color: #793ea5;
+  color: #8E3131;
   margin-top: 0;
   margin-bottom: 3rem;
   position: relative;
@@ -2060,7 +2060,9 @@ body.menu-is-open {
   width: 100%;
   height: 100vh;
   min-height: 786px;
+  background: url('../images/kothaihero.png');
   background-color: transparent;
+  background-size: cover;
   position: relative;
   display: table;
 }
@@ -2138,6 +2140,20 @@ body.menu-is-open {
 .home-content__main {
   position: relative;
   text-align: center;
+}
+
+
+.site-title-text {
+  font-family: 'Allerta Stencil', sans-serif !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 264.365px;
+  line-height: 249px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 19.9051px;
+
+  color: #FFFFFF;
 }
 
 /* ------------------------------------------------------------------- 
@@ -2731,8 +2747,9 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-about {
-  padding-top: 18rem;
-  padding-bottom: 18rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  height: 100vh;
   background-color: #121212;
   position: relative;
 }
@@ -2772,7 +2789,7 @@ html.no-csstransitions .home-content__main {
 
 .item-process {
   position: relative;
-  min-height: 24.6rem;
+  /* min-height: 24.6rem; */
   margin-bottom: 3rem;
 }
 
@@ -3396,7 +3413,7 @@ html.no-csstransitions .home-content__main {
   padding-bottom: 21rem;
   text-align: center;
   position: relative;
-  background-image: url(../images/hero-bg.jpg);
+  background-image: url(../images/pattern.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -3603,9 +3620,9 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-contact {
-  padding-top: 16.2rem;
-  padding-bottom: 21rem;
-  background-color: #5e3080;
+  padding-top: 6rem;
+  padding-bottom: 10rem;
+  background-color: #121212;
   color: rgba(255, 255, 255, 0.6);
   text-align: center;
   position: relative;
@@ -3638,7 +3655,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .contact-main {
-  font-size: 3.3rem;
+  font-size: 2.5rem;
   line-height: 1.636;
   margin-top: 9rem;
 }
@@ -3823,7 +3840,7 @@ footer {
   padding-top: 9rem;
   padding-bottom: 6rem;
   color: rgba(255, 255, 255, 0.6);
-  background-color: #5e3080;
+  background-color: #0f0f0f;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
   position: relative;
@@ -3854,7 +3871,7 @@ footer a {
 
 .ss-go-top a {
   color: #FFFFFF;
-  background-color: #351b48;
+  background-color: #8E3131;
   text-align: center;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
@@ -3946,9 +3963,8 @@ footer a {
  *
  * ------------------------------------------------------------------- */
  .s-exhibitions {
-  background: rgb(0,212,255);
-  background: linear-gradient(45deg, rgba(0,212,255,1) 0%, rgba(11,3,45,1) 100%);
-  background-image: url(https://images.unsplash.com/photo-1619204715997-1367fe5812f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1889&q=80);
+  background: #2a1538;
+  
   background-size: cover;
   background-position: center;  
   
@@ -3957,7 +3973,7 @@ footer a {
   justify-content: center;    
   height: 100vh;
 
-  padding-top: 16.2rem;
+  padding-top: 8rem;
   padding-bottom: 21rem;
 
 }
@@ -3979,7 +3995,7 @@ footer a {
 }
 
 .s-exhibitions .subhead {
-  color: #2a1538;
+  color: #8E3131;
 }
 
 .s-exhibitions .section-header,
@@ -4000,14 +4016,10 @@ footer a {
 .exhibition-card{
   margin: 0px 5px 0px 5px;
   padding: 1em;
-  backdrop-filter: blur(100px) saturate(180%);
-  -webkit-backdrop-filter: blur(100px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.25);
+  background-color: rgba(17, 25, 40, 0.95);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);  
-  filter: drop-shadow(0 30px 10px rgba(0,0,0,0.125));
-  height: 50rem;
-  width: 150rem;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  height: 500px;
 }
 
 .banner-image img {
@@ -4019,9 +4031,12 @@ footer a {
   /* border: 1px solid rgba(255,255,255, 0.255) */
 }
 
-.exhibition-card .button-wrapper {
-  display: flex;
-  align-items: flex-end;
+.exhibition-card .exhibition-card-button {
+  position: absolute;
+  bottom: 10;
+  left: 50;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .exhibition-card button {
