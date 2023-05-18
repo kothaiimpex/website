@@ -2729,7 +2729,7 @@ html.no-csstransitions .home-content__main {
 .s-about {
   padding-top: 8rem;
   padding-bottom: 8rem;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #121212;
   position: relative;
 }
