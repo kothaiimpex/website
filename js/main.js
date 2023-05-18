@@ -80,6 +80,47 @@
         // Insert the generated exhibition cards into the "exhibitions-main" div
         $(".exhibitions-main").html(exhibitionCards);
 
+        // Create cards for websiteImages and append them to the "masonry" div
+        var websiteImageCards = "";
+        websiteImages.forEach(function (image) {
+          var websiteImageCard =
+            '<div class="masonry__brick" data-aos="fade-up">' +
+            '<div class="item-folio">' +
+            '<div class="item-folio__thumb">' +
+            '<a href="#" class="thumb-link" title="' +
+            image.media_title +
+            '" data-size="1050x700">' +
+            '<img src="' +
+            image.stone_image +
+            '" srcset="' +
+            image.stone_image +
+            '" alt="">' +
+            "</a>" +
+            "</div>" +
+            '<div class="item-folio__text">' +
+            '<h3 class="item-folio__title">' +
+            image.media_title +
+            "</h3>" +
+            '<p class="item-folio__cat">' +
+            image.media_description +
+            "</p>" +
+            "</div>" +
+            '<a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">' +
+            '<i class="icon-link"></i>' +
+            "</a>" +
+            '<div class="item-folio__caption">' +
+            "<p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>" +
+            "</div>" +
+            "</div>" +
+            "</div>";
+
+          websiteImageCards += websiteImageCard;
+        });
+
+        // Append the generated website image cards to the "masonry" div
+        $(".masonry").append(websiteImageCards);
+        ssPhotoswipe();
+
         $("html, body").animate({ scrollTop: 0 }, "normal");
 
         // will first fade out the loading animation
@@ -165,7 +206,6 @@
     var items = [],
       $pswp = $(".pswp")[0],
       $folioItems = $(".item-folio");
-
     // get items
     $folioItems.each(function (i) {
       var $folio = $(this),
@@ -178,20 +218,16 @@
         $size = $thumbLink.data("size").split("x"),
         $width = $size[0],
         $height = $size[1];
-
       var item = {
         src: $href,
         w: $width,
         h: $height,
       };
-
       if ($caption.length > 0) {
         item.title = $.trim($titleText + $captionText);
       }
-
       items.push(item);
     });
-
     // bind click event
     $folioItems.each(function (i) {
       $(this).on("click", function (e) {
@@ -200,7 +236,6 @@
           index: i,
           showHideOpacity: true,
         };
-
         // initialize PhotoSwipe
         var lightBox = new PhotoSwipe(
           $pswp,
@@ -286,7 +321,6 @@
     ssMenuOnScrolldown();
     ssOffCanvas();
     ssMasonryFolio();
-    ssPhotoswipe();
     ssSlickSlider();
     ssSmoothScroll();
     ssAlertBoxes();
