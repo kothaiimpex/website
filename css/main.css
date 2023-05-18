@@ -3604,9 +3604,20 @@ html.no-csstransitions .home-content__main {
 }
 
 .contact-main {
+  width: 89%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 10px;
   font-size: 2.5rem;
   line-height: 1.636;
   margin-top: 9rem;
+}
+
+.contact-form-input {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .contact-main [class*="contact-"] {
@@ -3754,6 +3765,9 @@ html.no-csstransitions .home-content__main {
 
   .contact-email a {
     font-size: 3rem;
+  }
+  .contact-form-input {
+    width: 80%;
   }
 }
 

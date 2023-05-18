@@ -23,6 +23,46 @@
     $(".header-logo img").attr("src", "images/logo.png");
   }
 
+  // Function to handle form submission
+  function handleFormSubmission(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Get the form input values
+    var name = $("#inputName").val();
+    var email = $("#inputEmail").val();
+    var message = $("#inputMessage").val();
+
+    // Construct the request body object
+    var requestBody = {
+      to_email: email,
+      subject: name,
+      body: message,
+    };
+
+    // Make the POST request using AJAX
+    $.ajax({
+      url: "https://kteqa1.kothaiimpex.com/core/website-mail",
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify(requestBody),
+      success: function (response) {
+        // Request successful, do something
+        $("#inputName").val("");
+        $("#inputEmail").val("");
+        $("#inputMessage").val("");
+        alert(response?.response);
+      },
+      error: function (xhr, status, error) {
+        // Request failed, handle the error
+        console.log("Request failed", error);
+      },
+    });
+  }
+
+  //   Form event Listener
+  $("#contactForm").submit(handleFormSubmission);
+
   /* Preloader
    * -------------------------------------------------- */
   var ssPreloader = function () {
@@ -119,6 +159,7 @@
 
         // Append the generated website image cards to the "masonry" div
         $(".masonry").append(websiteImageCards);
+        ssMasonryFolio();
         ssPhotoswipe();
 
         $("html, body").animate({ scrollTop: 0 }, "normal");
@@ -320,7 +361,6 @@
     ssPreloader();
     ssMenuOnScrolldown();
     ssOffCanvas();
-    ssMasonryFolio();
     ssSlickSlider();
     ssSmoothScroll();
     ssAlertBoxes();
