@@ -3940,13 +3940,13 @@ footer a {
 }
 
 .exhibitions-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 10px;
+  text-align: center;
   width: 89%;
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-gap: 10px;
-  text-align: center;
 }
 
 .exhibition-card {
