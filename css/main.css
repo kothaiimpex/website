@@ -3905,7 +3905,6 @@ footer a {
 }
 
 .exhibition-card {
-  margin: 0px 5px 0px 5px;
   padding: 1em;
   background-color: rgba(17, 25, 40, 0.95);
   border-radius: 12px;
@@ -3935,6 +3934,21 @@ footer a {
   color: wheat;
   margin: 0 auto;
   display: block;
+}
+
+/* ------------------------------------------------------------------- 
+ * responsive:
+ * exhibition
+ * ------------------------------------------------------------------- */
+@media only screen and (max-width: 1000px) {
+  .exhibitions-main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 650px) {
+  .exhibitions-main {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ------------------------------------------------------------------- 
