@@ -7,10 +7,10 @@
   "use strict";
 
   var cfg = {
-      scrollDuration: 800, // smoothscroll duration
-      mailChimpURL:
-        "https://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e6957d85dc", // mailchimp url
-    },
+    scrollDuration: 800, // smoothscroll duration
+    mailChimpURL:
+      "https://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e6957d85dc", // mailchimp url
+  },
     $WIN = $(window);
 
   // Add the User Agent to the <html>
@@ -63,6 +63,52 @@
   //   Form event Listener
   $("#contactForm").submit(handleFormSubmission);
 
+
+  function buildGalleryImageCard(image) {
+    // This function constructs the HTML for an image card.
+    return '<div class="masonry__brick" data-aos="fade-up">' +
+      '<div class="item-folio">' +
+      '<div class="item-folio__thumb">' +
+      '<a href="' + image.file + '" class="thumb-link" title="' + image.title + '" data-size="1050x700">' +
+      '<img src="' + image.file + '" alt="' + image.title + '">' +
+      '</a>' +
+      '</div>' +
+      '<div class="item-folio__text">' +
+      '<h3 class="item-folio__title">' + image.title + '</h3>' +
+      '</div>' +
+      '<a href="' + image.file + '" class="item-folio__project-link" title="Project link">' +
+      '<i class="icon-link"></i>' +
+      '</a>' +
+      '<div class="item-folio__caption">' +
+      '<p>' + image.caption + '</p>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
+  }
+
+  function buildGalleryVideoCard(video) {
+    // This function constructs the HTML for a video card.
+    // It uses the HTML5 video tag to display the first frame as a thumbnail.
+    // The `controls` attribute adds video controls like play, pause, etc.
+    return '<div class="masonry__brick" data-aos="fade-up">' +
+      '<div class="item-folio">' +
+      '<div class="item-folio__thumb">' +
+      // Assuming the video file URL is directly playable in the browser
+      '<video class="video-preview" controls>' +
+      '<source src="' + video.file + '" type="video/mp4">' +
+      'Your browser does not support the video tag.' +
+      '</video>' +
+      '</div>' +
+      '<div class="item-folio__text">' +
+      '<h3 class="item-folio__title">' + video.title + '</h3>' +
+      '</div>' +
+      '<div class="item-folio__caption">' +
+      '<p>' + video.caption + '</p>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
+  }
+
   /* Preloader
    * -------------------------------------------------- */
   var ssPreloader = function () {
@@ -70,15 +116,14 @@
 
     // Make GET request to the API
     $.ajax({
-      url: "https://kteqa1.kothaiimpex.com/core/website-data",
+      url: "https://kteqa.kothaiimpex.com/api/v1/website/exhibitions",
       method: "GET",
       dataType: "json",
       success: function (response) {
         // API request successful
 
         // Process the response and perform necessary actions
-        var exhibitionData = response.response.exhibition_data;
-        var websiteImages = response.response.website_images;
+        var exhibitionData = response.data;
 
         // Update your code with the logic using the API response
         // Loop through exhibitionData and create exhibition cards
@@ -88,7 +133,7 @@
             '<div class="exhibition-card">' +
             '<div class="wrapper">' +
             '<div class="banner-image"><img src="' +
-            exhibition.event_picture +
+            exhibition.picture +
             '" alt=""></div>' +
             '<h3 style="color: #FFF; font-weight: 600; font-size: 2rem; margin-top: 0; margin-bottom: 2.5em;">' +
             exhibition.name +
@@ -96,7 +141,7 @@
             '<p style="text-align: left; margin-bottom: 0;">' +
             '<i class="fa-solid fa-calendar" style="color: #FFFFFF;"></i>' +
             "&nbsp;" +
-            exhibition.exhibition_date +
+            exhibition.start_date +
             "</p>" +
             '<p style="text-align: left; margin-bottom: 0;">' +
             '<i class="fa-solid fa-location-dot" style="color: #FFFFFF;"></i>' +
@@ -119,46 +164,31 @@
 
         // Insert the generated exhibition cards into the "exhibitions-main" div
         $(".exhibitions-main").html(exhibitionCards);
+      }
+    });
 
+    $.ajax({
+      url: "https://kteqa.kothaiimpex.com/api/v1/website/gallery",
+      method: "GET",
+      dataType: "json",
+      success: function (response) {
+        var galleryData = response.data;
+        $(".masonry").html('');
         // Create cards for websiteImages and append them to the "masonry" div
-        var websiteImageCards = "";
-        websiteImages.forEach(function (image) {
-          var websiteImageCard =
-            '<div class="masonry__brick" data-aos="fade-up">' +
-            '<div class="item-folio">' +
-            '<div class="item-folio__thumb">' +
-            '<a href="#" class="thumb-link" title="' +
-            image.media_title +
-            '" data-size="1050x700">' +
-            '<img src="' +
-            image.stone_image +
-            '" srcset="' +
-            image.stone_image +
-            '" alt="">' +
-            "</a>" +
-            "</div>" +
-            '<div class="item-folio__text">' +
-            '<h3 class="item-folio__title">' +
-            image.media_title +
-            "</h3>" +
-            '<p class="item-folio__cat">' +
-            image.media_description +
-            "</p>" +
-            "</div>" +
-            '<a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">' +
-            '<i class="icon-link"></i>' +
-            "</a>" +
-            '<div class="item-folio__caption">' +
-            "<p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>" +
-            "</div>" +
-            "</div>" +
-            "</div>";
 
-          websiteImageCards += websiteImageCard;
+        var galleryCards = "";
+        galleryData.forEach(function (item) {
+          if (item.item_type === 'image') {
+            // Build image card
+            galleryCards += buildGalleryImageCard(item);
+          } else if (item.item_type === 'video') {
+            // Build video card
+            galleryCards += buildGalleryVideoCard(item);
+          }
         });
 
         // Append the generated website image cards to the "masonry" div
-        $(".masonry").append(websiteImageCards);
+        $(".masonry").append(galleryCards);
         ssMasonryFolio();
         ssPhotoswipe();
 
@@ -256,7 +286,7 @@
         $titleText = "<h4>" + $.trim($title.html()) + "</h4>",
         $captionText = $.trim($caption.html()),
         $href = $thumbLink.attr("href"),
-        $size = $thumbLink.data("size").split("x"),
+        $size = $thumbLink.attr("data-size") ? $thumbLink.data("size").split("x") : ["0", "0"],
         $width = $size[0],
         $height = $size[1];
       var item = {
